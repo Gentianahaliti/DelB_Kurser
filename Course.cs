@@ -8,4 +8,9 @@ public class Course
     public string Name;                 // Namnet på kursen.
     public int MaxSeats;                // Hur många studenter som får plats i kursen.
     public List<Student> Students;      // En lista som håller alla studenter som går kursen.
-    
+        public Course(string name, int maxSeats)    // Den här metoden körs när man skapar en kurs
+    {
+        Name = name;                            // Sparar namnet som skickas in
+        MaxSeats = maxSeats;                    // Sparar max antal platser som skickas in
+        Students = new List<Student>();         // Startar en tom lista med studenter (alla kurser börjar tomma)
+    }
