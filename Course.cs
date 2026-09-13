@@ -14,3 +14,22 @@ public class Course
         MaxSeats = maxSeats;                    // Sparar max antal platser som skickas in
         Students = new List<Student>();         // Startar en tom lista med studenter (alla kurser börjar tomma)
     }
+        public void Enroll(Student student)     // Metod som ska anmäla en student till kursen
+    {
+        // Logik kommer senare
+    }
+
+    public void Remove(Student student)     // Metod som ska ta bort en student från kursen
+    {
+        // Logik kommer senare
+    }
+
+    public void RollCall()                  // Metod som skriver ut alla studenter i kursen
+    {
+        // Logik kommer senare
+    }
+
+    public override string ToString()       // Metod som gör om kursen till text
+    {
+        return "";                          // Fylls i senare
+    }
