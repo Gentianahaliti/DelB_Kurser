@@ -11,3 +11,16 @@ public class Student
         Name = name;              // Sparar namnet som skickas in
     }
 }
+public string NameProperty
+{
+    get
+    {
+        // När jag vill läsa namnet, returnerar jag det här.
+        return Name;
+    }
+    set
+    {
+        // När jag vill ändra namnet, sparas det nya värdet här.
+        Name = value;
+    }
+}
