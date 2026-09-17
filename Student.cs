@@ -20,4 +20,9 @@ public class Student
                                   // Det betyder att studenten får sitt namn direkt när den skapas.
         Courses = new List<Course>(); // Startar en tom lista över studentens kurser.
     }
+
+    public void Join(Course course) // Metod som låter studenten gå med i en kurs.
+    {
+        course.Enroll(this);        // Anmäler studenten till kursen.
+    }
 }
