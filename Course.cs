@@ -18,10 +18,18 @@ public class Course
 
     public void Enroll(Student student)     // Metod som ska anmäla en student till kursen.
     {
+        // Kollar om studenten redan finns i kursen.
+        if (Students.Contains(student))
+        {
+            Console.WriteLine($"{student.Name} går redan kursen {Name}.");
+            return;
+        }
+
         // Kollar om det finns plats kvar i kursen.
         if (Students.Count < MaxSeats)
         {
             Students.Add(student);          // Lägger till studenten i listan.
+            student.Courses.Add(this);      // Lägger till kursen i studentens lista.
             Console.WriteLine($"{student.Name} har anmälts till kursen {Name}.");
         }
         else
