@@ -1,48 +1,73 @@
 using System;                     // Jag använder System för att kunna skriva ut text i konsolen.
-using System.Collections.Generic; // Jag behöver List<> för att kunna ha listor med studenter.
+using System.Collections.Generic; // Jag tar in List<> så jag kan skapa listor med studenter.
 
 // Den här klassen är en kurs.
 // En kurs har ett namn, ett max antal platser och en lista med studenter.
 public class Course
 {
-    public string Name;                 // Namnet på kursen.
-    public int MaxSeats;                // Hur många studenter som får plats i kursen.
-    public List<Student> Students;      // En lista som håller alla studenter som går kursen.
-        public Course(string name, int maxSeats)    // Den här metoden körs när man skapar en kurs
+    public string Name;                 // Variabel som håller kursens namn.
+    public int MaxSeats;                // Variabel som håller hur många studenter som får plats i kursen.
+    public List<Student> Students;      // En lista som ska hålla alla studenter som går kursen.
+
+    public Course(string name, int maxSeats)    // Konstruktorn. Den körs automatiskt när jag skapar en kurs.
     {
-        Name = name;                            // Sparar namnet som skickas in
-        MaxSeats = maxSeats;                    // Sparar max antal platser som skickas in
-        Students = new List<Student>();         // Startar en tom lista med studenter (alla kurser börjar tomma)
-    }
-        public void Enroll(Student student)     // Metod som ska anmäla en student till kursen
-    {
-        // Logik kommer senare
+        Name = name;                            // Sparar kursens namn.
+        MaxSeats = maxSeats;                    // Sparar max antal platser.
+        Students = new List<Student>();         // Startar en tom lista. Alla kurser börjar utan studenter.
     }
 
-    public void Remove(Student student)     // Metod som ska ta bort en student från kursen
+    public void Enroll(Student student)     // Metod som ska anmäla en student till kursen.
     {
-        // Logik kommer senare
+        // Kollar om det finns plats kvar i kursen.
+        if (Students.Count < MaxSeats)
+        {
+            Students.Add(student);          // Lägger till studenten i listan.
+            Console.WriteLine($"{student.Name} har anmälts till kursen {Name}.");
+        }
+        else
+        {
+            // Om kursen är full skriver jag ut ett meddelande.
+            Console.WriteLine($"Kursen {Name} är full. {student.Name} kunde inte anmälas.");
+        }
     }
 
-    public void RollCall()                  // Metod som skriver ut alla studenter i kursen
+    public void Remove(Student student)     // Metod som ska ta bort en student från kursen.
     {
-        // Logik kommer senare
+        // Kollar om studenten finns i listan.
+        if (Students.Contains(student))
+        {
+            Students.Remove(student);       // Tar bort studenten från listan.
+            Console.WriteLine($"{student.Name} har tagits bort från kursen {Name}.");
+        }
+        else
+        {
+            // Om studenten inte finns i kursen skriver jag ut ett meddelande.
+            Console.WriteLine($"{student.Name} finns inte i kursen {Name}.");
+        }
     }
 
-    public override string ToString()       // Metod som gör om kursen till text
+    public void RollCall()                  // Metod som skriver ut alla studenter i kursen.
     {
-        return "";                          // Fylls i senare
+        Console.WriteLine($"Studenter i kursen {Name}:");  // Skriver ut kursens namn.
+
+        // Kollar om listan är tom.
+        if (Students.Count == 0)
+        {
+            Console.WriteLine("Inga studenter är anmälda ännu."); // Om tom, skriv ut detta.
+        }
+        else
+        {
+            // Annars loopar jag igenom listan och skriver ut varje students namn.
+            foreach (Student s in Students)
+            {
+                Console.WriteLine($"- {s.Name}");
+            }
+        }
     }
-    public void Remove(Student student)     // Metod som ska ta bort en student från kursen
-{
-    // Kollar om studenten finns i listan
-    if (Students.Contains(student))
+
+    public override string ToString()       // Metod som gör om kursen till text.
     {
-        Students.Remove(student);       // Tar bort studenten
-        Console.WriteLine($"{student.Name} har tagits bort från kursen {Name}.");
-    }
-    else
-    {
-        Console.WriteLine($"{student.Name} finns inte i kursen {Name}.");
+        // Returnerar kursens namn och hur många studenter som är anmälda.
+        return $"{Name} ({Students.Count}/{MaxSeats} studenter)";
     }
 }
