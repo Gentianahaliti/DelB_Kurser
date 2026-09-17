@@ -45,6 +45,7 @@ public class Course
         if (Students.Contains(student))
         {
             Students.Remove(student);       // Tar bort studenten från listan.
+            student.Courses.Remove(this);   // Tar bort kursen från studentens lista.
             Console.WriteLine($"{student.Name} har tagits bort från kursen {Name}.");
         }
         else
