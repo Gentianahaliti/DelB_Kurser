@@ -2,56 +2,64 @@ using System;
 using System.Collections.Generic;
 // Jag tar in System-biblioteket. Det behövs för grundläggande saker i C#,
 // som att kunna skriva ut text med Console.WriteLine och använda vanliga funktioner.
+// Detta behöver jag också för att kunna få tillgång till List<> i C#.
 
 // Den här klassen är en student.
 // En klass är som en mall. Jag kan skapa flera studenter från samma mall.
-// Varje student kommer ha sin egen data (t.ex. sitt eget namn).
+// Varje student kommer ha sin egen data, till exempel sitt namn och sina kurser.
 public class Student
 {
-    public string Name;   // Här skapar jag en variabel som ska hålla studentens namn.
-                          // Typen är string, vilket betyder text.
-    public List<Course> Courses; // En lista som håller alla kurser studenten går.
+    public string Name;   // Här sparar jag studentens namn.
+                          // Typen string betyder text.
+    public List<Course> Courses; // Den här listan håller alla kurser som studenten går i.
 
     public Student(string name)   // Detta är konstruktorn.
-                                  // Den körs automatiskt när jag skapar en ny student.
-                                  // Jag måste skicka in ett namn när jag skapar en student.
+                                  // Den körs när jag skapar en ny student.
+                                  // Jag skickar med ett namn när jag skapar studenten.
     {
-        Name = name;              // Här sparar jag namnet jag fick in i variabeln Name.
-                                  // Det betyder att studenten får sitt namn direkt när den skapas.
-        Courses = new List<Course>(); // Startar en tom lista över studentens kurser.
+        Name = name;              // Här sparar jag namnet som jag fick in.
+                                  // Nu har studenten ett namn direkt.
+        Courses = new List<Course>(); // Jag startar en tom lista över kurserna.
     }
 
-    public void Join(Course course) // Metod som låter studenten gå med i en kurs.
+    public void Join(Course course) // Den här metoden gör att studenten går med i en kurs.
     {
-        course.Enroll(this);        // Anmäler studenten till kursen.
+        // Jag anropar kursens metod som anmäler studenten.
+        // Då blir kursen och studenten kopplade ihop.
+        course.Enroll(this);        // Jag skickar med den här studenten till kursen.
     }
 
-    public void Leave(Course course) // Metod som låter studenten lämna en kurs.
+    public void Leave(Course course) // Den här metoden gör att studenten lämnar en kurs.
     {
-        course.Remove(this);         // Tar bort studenten från kursen.
+        // Jag anropar kursens metod som tar bort studenten.
+        // Då tas studenten bort från kursen och kursen tas bort från studentens lista.
+        course.Remove(this);         // Jag skickar med den här studenten till kursen.
     }
 
-    public void Schedule() // Metod som skriver ut studentens kurser.
+    public void Schedule() // Den här metoden skriver ut vilka kurser studenten går.
     {
-        Console.WriteLine($"Kurser för {Name}:"); // Skriver ut studentens namn.
+        // Jag skriver först en rubrik med studentens namn.
+        Console.WriteLine($"Kurser för {Name}:");
 
-        // Kollar om studenten inte går någon kurs.
+        // Om listan är tom betyder det att studenten inte går i någon kurs.
         if (Courses.Count == 0)
         {
             Console.WriteLine("Studenten går inte någon kurs ännu.");
         }
         else
         {
-            // Skriver ut kurserna som studenten går.
+            // Om listan inte är tom går jag igenom alla kurser en i taget.
             foreach (Course course in Courses)
             {
+                // Jag skriver ut namnet på varje kurs.
                 Console.WriteLine($"- {course.Name}");
             }
         }
     }
 
-    public override string ToString() // Metod som gör om studenten till text.
+    public override string ToString() // Den här metoden gör att studenten visas som text.
     {
-        return Name; // Returnerar studentens namn.
+        // När programmet behöver skriva ut studenten returnerar den bara namnet.
+        return Name;
     }
 }

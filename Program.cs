@@ -1,6 +1,4 @@
-﻿using System;
-
-// Jag skapar en student och en kurs för att testa programmet.
+﻿// Jag skapar en student och en kurs för att testa programmet.
 Student student = new Student("Anna");
 Student student2 = new Student("Erik");
 Student student3 = new Student("Sara");
