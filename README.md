@@ -1,4 +1,4 @@
-﻿# DelB_Kurser och studenter
+﻿# DelB_Kurser 
 ## Kurser och studenter
 
 Det här programmet visar hur studenter och kurser fungerar tillsammans i C#.
