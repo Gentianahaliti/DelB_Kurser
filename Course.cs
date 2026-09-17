@@ -33,3 +33,16 @@ public class Course
     {
         return "";                          // Fylls i senare
     }
+    public void Remove(Student student)     // Metod som ska ta bort en student från kursen
+{
+    // Kollar om studenten finns i listan
+    if (Students.Contains(student))
+    {
+        Students.Remove(student);       // Tar bort studenten
+        Console.WriteLine($"{student.Name} har tagits bort från kursen {Name}.");
+    }
+    else
+    {
+        Console.WriteLine($"{student.Name} finns inte i kursen {Name}.");
+    }
+}
