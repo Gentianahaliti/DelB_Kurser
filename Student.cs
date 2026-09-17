@@ -25,4 +25,9 @@ public class Student
     {
         course.Enroll(this);        // Anmäler studenten till kursen.
     }
+
+    public void Leave(Course course) // Metod som låter studenten lämna en kurs.
+    {
+        course.Remove(this);         // Tar bort studenten från kursen.
+    }
 }
