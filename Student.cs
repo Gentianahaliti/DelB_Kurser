@@ -1,26 +1,20 @@
-using System;
+using System;  
+// Jag tar in System-biblioteket. Det behövs för grundläggande saker i C#,
+// som att kunna skriva ut text med Console.WriteLine och använda vanliga funktioner.
 
 // Den här klassen är en student.
-// En student har ett namn och senare kan vi lägga till mer info.
+// En klass är som en mall. Jag kan skapa flera studenter från samma mall.
+// Varje student kommer ha sin egen data (t.ex. sitt eget namn).
 public class Student
 {
-    public string Name;   // Namnet på studenten
+    public string Name;   // Här skapar jag en variabel som ska hålla studentens namn.
+                          // Typen är string, vilket betyder text.
 
-    public Student(string name)   // Konstruktor som körs när man skapar en student
+    public Student(string name)   // Detta är konstruktorn.
+                                  // Den körs automatiskt när jag skapar en ny student.
+                                  // Jag måste skicka in ett namn när jag skapar en student.
     {
-        Name = name;              // Sparar namnet som skickas in
-    }
-}
-public string NameProperty
-{
-    get
-    {
-        // När jag vill läsa namnet, returnerar jag det här.
-        return Name;
-    }
-    set
-    {
-        // När jag vill ändra namnet, sparas det nya värdet här.
-        Name = value;
+        Name = name;              // Här sparar jag namnet jag fick in i variabeln Name.
+                                  // Det betyder att studenten får sitt namn direkt när den skapas.
     }
 }
