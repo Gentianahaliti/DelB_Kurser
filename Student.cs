@@ -49,4 +49,9 @@ public class Student
             }
         }
     }
+
+    public override string ToString() // Metod som gör om studenten till text.
+    {
+        return Name; // Returnerar studentens namn.
+    }
 }
