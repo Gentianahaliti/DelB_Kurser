@@ -30,4 +30,23 @@ public class Student
     {
         course.Remove(this);         // Tar bort studenten från kursen.
     }
+
+    public void Schedule() // Metod som skriver ut studentens kurser.
+    {
+        Console.WriteLine($"Kurser för {Name}:"); // Skriver ut studentens namn.
+
+        // Kollar om studenten inte går någon kurs.
+        if (Courses.Count == 0)
+        {
+            Console.WriteLine("Studenten går inte någon kurs ännu.");
+        }
+        else
+        {
+            // Skriver ut kurserna som studenten går.
+            foreach (Course course in Courses)
+            {
+                Console.WriteLine($"- {course.Name}");
+            }
+        }
+    }
 }
