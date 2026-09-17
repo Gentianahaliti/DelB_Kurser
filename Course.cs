@@ -19,8 +19,10 @@ public class Course
     public void Enroll(Student student)     // Metod som ska anmäla en student till kursen.
     {
         // Kollar om studenten redan finns i kursen.
+        // Contains betyder att programmet letar efter studenten i listan.
         if (Students.Contains(student))
         {
+            // return avslutar metoden direkt, så studenten inte läggs till en gång till.
             Console.WriteLine($"{student.Name} går redan kursen {Name}.");
             return;
         }
@@ -28,7 +30,9 @@ public class Course
         // Kollar om det finns plats kvar i kursen.
         if (Students.Count < MaxSeats)
         {
+            // Students är kursens lista över alla studenter.
             Students.Add(student);          // Lägger till studenten i listan.
+            // this betyder den kurs som metoden körs i just nu.
             student.Courses.Add(this);      // Lägger till kursen i studentens lista.
             Console.WriteLine($"{student.Name} har anmälts till kursen {Name}.");
         }
