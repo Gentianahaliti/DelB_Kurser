@@ -22,6 +22,10 @@ course.Enroll(student3);
 course.RollCall();
 student.Schedule();
 
+// Jag tar bort Erik direkt från kursens håll.
+course.Remove(student2);
+student2.Schedule();
+
 // Studenten lämnar kursen.
 student.Leave(course);
 student.Schedule();
